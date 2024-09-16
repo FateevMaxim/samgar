@@ -52,7 +52,7 @@ class DashboardController extends Controller
             return view('othercity')->with(compact('count', 'config', 'qr', 'cities'));
         }elseif (Auth::user()->is_active === 1 && Auth::user()->type === 'admin' || Auth::user()->is_active === 1 && Auth::user()->type === 'moderator'){
             $messages = Message::all();
-            $config = Configuration::query()->select('address')->first();
+            $config = Configuration::query()->select('address', 'title_text')->first();
             $search_phrase = '';
             $city = '';
             $cities = City::query()->select('title')->get();
